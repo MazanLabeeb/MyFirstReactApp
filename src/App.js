@@ -1,25 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import React from 'react';
+import CardList from './components/card-list/card-list.component.jsx';
+import SearchBox from './components/search-box/search-box.component';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      users: [],
+      username: 'Mazan Labeeb',
+      searchQuery: ''
+    }
+  }
+
+  componentDidMount() { 
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(res => {
+        this.setState(() => {
+          return {
+            users: res
+          }
+        })
+      })
+  }
+
+  onSearchChange = event => {
+    const searchQuery = event.target.value.trim();
+    this.setState(
+      () => {
+        return {
+          searchQuery
+        }
+      }
+    )
+  }
+
+  render() {
+    const { users, searchQuery, username } = this.state;
+    const { onSearchChange } = this;
+
+    let filteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    return (
+      <div className="mazan">
+        <SearchBox username={username} className = {"search-box"} onSearchHandler = {onSearchChange} placeholder = {"Search..."}/>
+        <CardList className="j" filteredUsers={filteredUsers} />
+
+      </div>
+    );
+  }
 }
+
 
 export default App;
