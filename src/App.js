@@ -5,9 +5,20 @@ import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component';
 
 
+
+
+
 const App = () => {
   const [searchField, setSearchField] = useState("");
-  console.log(searchField);
+  const [users, setUsers] = useState([]);
+  console.log("render");
+
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then(res => {
+      // setUsers(res);
+    })
+
 
   const onSearchChange = event => {
     const searchQuery = event.target.value.trim();
@@ -15,11 +26,11 @@ const App = () => {
   }
   return (
     <div className={"header"}>
-         <SearchBox 
-         className = {"search-box"} 
-         onSearchHandler = {onSearchChange} 
-         placeholder = {"Search..."}/>
-      
+      <SearchBox
+        className={"search-box"}
+        onSearchHandler={onSearchChange}
+        placeholder={"Search..."} />
+
     </div>
   );
 }
