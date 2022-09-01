@@ -3,6 +3,8 @@ import { Component } from "react";
 
 const Card = ({user}) => {
     const { id, name, email } = user;
+    // if(!name){console.log("dj")}
+    
     return (
         <div key={id} className="card">
             <img src={`https://robohash.org/${id}?set=set4&size=180x180`} alt={`profile ${name}`} />
