@@ -11,15 +11,16 @@ import SearchBox from './components/search-box/search-box.component';
 const App = () => {
   const [searchQuery, setSearchField] = useState("");
   const [users, setUsers] = useState([]);
-  console.log("render");
+  const [filteredUsers, setFilteredUsers] = useState(users);
 
-  useEffect(()=>{
+
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
-    .then(res => res.json())
-    .then(res => {
-      setUsers(res);
-    })
-  },[])
+      .then(res => res.json())
+      .then(res => {
+        setUsers(res);
+      })
+  }, [])
 
 
   const onSearchChange = event => {
@@ -27,7 +28,10 @@ const App = () => {
     setSearchField(searchQuery);
   }
 
-  let filteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
+  useEffect(() => {
+     let newfilteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    setFilteredUsers(newfilteredUsers);
+  },[users,searchQuery])
 
   return (
     <div className={"header"}>
@@ -35,6 +39,7 @@ const App = () => {
         className={"search-box"}
         onSearchHandler={onSearchChange}
         placeholder={"Search..."} />
+
 
       <CardList filteredUsers={filteredUsers} />
 
