@@ -1,5 +1,5 @@
 import './App.css';
-import { Component, useState } from 'react';
+import { Component, useEffect, useState } from 'react';
 import React from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
 import SearchBox from './components/search-box/search-box.component';
@@ -9,27 +9,34 @@ import SearchBox from './components/search-box/search-box.component';
 
 
 const App = () => {
-  const [searchField, setSearchField] = useState("");
+  const [searchQuery, setSearchField] = useState("");
   const [users, setUsers] = useState([]);
   console.log("render");
 
-  fetch("https://jsonplaceholder.typicode.com/users")
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/users")
     .then(res => res.json())
     .then(res => {
-      // setUsers(res);
+      setUsers(res);
     })
+  },[])
 
 
   const onSearchChange = event => {
     const searchQuery = event.target.value.trim();
     setSearchField(searchQuery);
   }
+
+  let filteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
+
   return (
     <div className={"header"}>
       <SearchBox
         className={"search-box"}
         onSearchHandler={onSearchChange}
         placeholder={"Search..."} />
+
+      <CardList filteredUsers={filteredUsers} />
 
     </div>
   );
