@@ -9,15 +9,17 @@ const App = () => {
   const [searchField, setSearchField] = useState("");
   console.log(searchField);
 
-  const onSearchHandler = event => {
+  const onSearchChange = event => {
     const searchQuery = event.target.value.trim();
     setSearchField(searchQuery);
   }
   return (
     <div className={"header"}>
-      <h1>Monsters Rolodex  </h1>
-      <input type="search" className={"className"} placeholder={"Search..."} onChange={onSearchHandler} />
-
+         <SearchBox 
+         className = {"search-box"} 
+         onSearchHandler = {onSearchChange} 
+         placeholder = {"Search..."}/>
+      
     </div>
   );
 }
