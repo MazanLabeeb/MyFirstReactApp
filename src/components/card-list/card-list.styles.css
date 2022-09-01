@@ -1,0 +1,17 @@
+.cards-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+}
+
+@media only screen and (min-width: 500px){
+    .cards-container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 800px){
+    .cards-container{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

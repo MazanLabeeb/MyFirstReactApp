@@ -1,0 +1,20 @@
+.search-box{
+    padding: 8px 16px 8px 16px;
+    margin: 5px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+}
+.search-box:focus{
+    outline: 4px solid rgb(255, 255, 255,0.5);
+}
+h1{
+    color: white;
+    font-size: 5vw;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+.header{
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.card{
+    background-color: aliceblue;
+    border-radius: 5px;
+    color:rebeccapurple;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+.card p{font-size: 12px;}
+.card h5{font-size: 19px;}
+
+.card img{
+    width: 180px;
+    height: auto;
+    margin: 0 auto;
+}

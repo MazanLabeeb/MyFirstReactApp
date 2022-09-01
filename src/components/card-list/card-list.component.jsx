@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./card-list.styles.css";
+import Card from "../card/card.component";
 
 class CardList extends Component {
 
@@ -7,17 +8,14 @@ class CardList extends Component {
         const { filteredUsers } = this.props;
         // console.log(name);
         return (
-            filteredUsers.map(user => {
-                const {id, name, email} =user;
-                return (
-                    <div key={id} className="card">
-                        <img src={`https://robohash.org/${id}?set=set4&size=180x180`} alt={`profile ${name}`} />
-                        <h5>{name}</h5>
-                        <p>{email}</p>
-                    </div>
-                    
-                );
-            })
+            <div className={"cards-container"} >
+                {filteredUsers.map(user => {
+                    return (
+                        <Card key={user.name} user={user} />
+                    );
+                })}
+            </div>
+
         )
     }
 }

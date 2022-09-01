@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div className="mazan">
         <SearchBox username={username} className = {"search-box"} onSearchHandler = {onSearchChange} placeholder = {"Search..."}/>
-        <CardList className="j" filteredUsers={filteredUsers} />
+        <CardList  filteredUsers={filteredUsers} />
 
       </div>
     );
