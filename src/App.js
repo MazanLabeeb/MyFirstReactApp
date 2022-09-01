@@ -22,16 +22,18 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    let newfilteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
+   setFilteredUsers(newfilteredUsers);
+ },[users,searchQuery])
+
 
   const onSearchChange = event => {
     const searchQuery = event.target.value.trim();
     setSearchField(searchQuery);
   }
 
-  useEffect(() => {
-     let newfilteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
-    setFilteredUsers(newfilteredUsers);
-  },[users,searchQuery])
+  
 
   return (
     <div className={"header"}>

@@ -12,10 +12,4 @@ const Card = ({user}) => {
     );
 }
 
-// class Card extends Component {
-//     render() {
-
-//     }
-// }
-
 export default Card;
