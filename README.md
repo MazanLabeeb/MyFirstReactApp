@@ -1,4 +1,4 @@
-# `<a href="https://mazanlabeeb.github.io/MyFirstReactApp/build/" target="_blank"> DEMO </a>`
+# <a href="https://mazanlabeeb.github.io/MyFirstReactApp/build/" target="_blank"> DEMO </a>
 
 ### Getting Started with Create React App
 
