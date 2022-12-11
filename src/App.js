@@ -1,8 +1,7 @@
 import './App.css';
-import { Component, useEffect, useState } from 'react';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
-import SearchBox from './components/search-box/search-box.component';
+import SearchBox from './components/search-box/search-box.component.tsx';
 
 
 
@@ -24,8 +23,8 @@ const App = () => {
 
   useEffect(() => {
     let newfilteredUsers = users.filter(val => val.name.toLowerCase().includes(searchQuery.toLowerCase()))
-   setFilteredUsers(newfilteredUsers);
- },[users,searchQuery])
+    setFilteredUsers(newfilteredUsers);
+  }, [users, searchQuery])
 
 
   const onSearchChange = event => {
@@ -33,7 +32,7 @@ const App = () => {
     setSearchField(searchQuery);
   }
 
-  
+
 
   return (
     <div className={"header"}>
