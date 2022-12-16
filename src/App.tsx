@@ -1,24 +1,28 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, EventHandler, useEffect, useState } from 'react';
 import CardList from './components/card-list/card-list.component.jsx';
-import SearchBox from './components/search-box/search-box.component.tsx';
+import SearchBox from './components/search-box/search-box.component';
+import { getData } from './utils/data.utils';
 
-
-
-
+export type TUsers = {
+  id: string;
+  name: string;
+  email: string;
+}
 
 const App = () => {
   const [searchQuery, setSearchField] = useState("");
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<TUsers[]>([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
 
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(res => {
-        setUsers(res);
-      })
+    
+    (async () => {
+      const getUsers = await getData<TUsers[]>("https://jsonplaceholder.typicode.com/users");
+      setUsers(getUsers);
+    })();
+
   }, [])
 
   useEffect(() => {
@@ -27,7 +31,7 @@ const App = () => {
   }, [users, searchQuery])
 
 
-  const onSearchChange = event => {
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const searchQuery = event.target.value.trim();
     setSearchField(searchQuery);
   }
