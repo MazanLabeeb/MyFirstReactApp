@@ -1,6 +1,6 @@
 import './App.css';
-import { ChangeEvent, ChangeEventHandler, EventHandler, useEffect, useState } from 'react';
-import CardList from './components/card-list/card-list.component.jsx';
+import { ChangeEvent, useEffect, useState } from 'react';
+import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
 import { getData } from './utils/data.utils';
 

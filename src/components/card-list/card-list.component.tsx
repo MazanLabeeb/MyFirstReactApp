@@ -1,8 +1,12 @@
-import { Component } from "react";
 import "./card-list.styles.css";
 import Card from "../card/card.component";
+import { TUsers } from '../../App';
 
-const CardList = ({ filteredUsers }) => (
+type CardListProps = {
+    filteredUsers: TUsers[]
+}
+
+const CardList = ({ filteredUsers }: CardListProps) => (
     <div className={"cards-container"} >
         {filteredUsers.map(user => {
             return (
