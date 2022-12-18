@@ -15,7 +15,6 @@ const App = () => {
   const [users, setUsers] = useState<TUsers[]>([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
 
-
   useEffect(() => {
     
     (async () => {
